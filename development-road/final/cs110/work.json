@@ -1,5 +1,6 @@
 {
   "schema": "final-road-work-v1",
+  "payloadVersion": 2,
   "course": "CS110",
   "name": "Lexxie Ayala",
   "work": {
@@ -14,6 +15,7 @@
       "settings"
     ],
     "engine": "Unity / C#",
+    "environmentTest": true,
     "gitEvidence": "I added and commit a simple readme",
     "ai": "Gemini and Claude",
     "aiVerify": "I will run the code and ensure it runs correctly",
@@ -21,6 +23,7 @@
     "plan": "",
     "availability": "",
     "service": "",
+    "supportMode": "closed",
     "role": "Developer, Lead, Documentation, etc.",
     "board": {
       "nodes": [
@@ -113,7 +116,70 @@
       "questions": ""
     },
     "evidence": {},
+    "dailyDraft": {
+      "meeting": "",
+      "worked": "",
+      "next": "",
+      "blocker": "",
+      "evidence": ""
+    },
+    "requirements": [
+      {
+        "id": "core",
+        "code": "R01",
+        "title": "Working project foundation",
+        "evidence": "Working source and build (60); authored program logic (35); meaningful tests (20); run guide and evidence map (20); individual explanation (15)."
+      },
+      {
+        "id": "access",
+        "code": "R08",
+        "title": "Accessible controls and interface",
+        "evidence": "Demonstrate keyboard access, readable contrast, clear feedback and one user-tested accessibility improvement."
+      },
+      {
+        "id": "tests",
+        "code": "R10",
+        "title": "Automated regression tests",
+        "evidence": "Run meaningful normal, boundary and failure tests. Show a defect the suite detects."
+      },
+      {
+        "id": "modular",
+        "code": "R09",
+        "title": "Modular architecture",
+        "evidence": "Show a module/class diagram, clear responsibilities and a change made without rewriting unrelated systems."
+      },
+      {
+        "id": "save",
+        "code": "R02",
+        "title": "Save and restore progress",
+        "evidence": "Save meaningful state; close and reopen the program; demonstrate correct restoration and invalid-file handling."
+      },
+      {
+        "id": "settings",
+        "code": "R04",
+        "title": "Settings that persist",
+        "evidence": "Provide useful settings, validate changes, save them and demonstrate restoration. This must extend beyond the same progress data."
+      }
+    ],
     "tasks": [],
     "dailyNotes": []
-  }
+  },
+  "team": {
+    "name": "A beutiful surreal game",
+    "mode": "solo",
+    "project": "Levo",
+    "projectRepo": "",
+    "members": [
+      {
+        "name": "Lexxie Ayala",
+        "role": "Developer, Lead, Documentation, etc."
+      }
+    ]
+  },
+  "sharedPlan": {
+    "goal": "",
+    "plan": "",
+    "tasks": []
+  },
+  "completedReports": []
 }
