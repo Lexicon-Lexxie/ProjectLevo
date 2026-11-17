@@ -1,0 +1,1 @@
+Open index.html offline. Keep receipt codes with your Canvas submission. Keep private recovery keys separate. Downloading does not submit to Canvas.
