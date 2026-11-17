@@ -126,7 +126,7 @@
       "returned": true,
       "goal": "A working scene where the player can walk in first person, pick up and throw a physics prop, press a button to open a door, and save and reload that puzzle state.",
       "personal": "In my role as the only developer, I will write all the code, set up the Unity project and Git repo (ProjectLevo), make the documentation, and run the tests. I understand the pipeline as: Goal (working project) → Inputs (code and assets) → Build (core interaction, then modules, tests, save, settings, accessibility) → Test (expected behavior at each stage) → Deliver (source, README, run guide and evidence). I will use AI (Gemini and Claude) for help, but I will run and check all code myself to make sure it works, and I will explain my own contribution in my own words.",
-      "questions": ""
+      "questions": "Risks: 53 hours is tight for six stages, so I may cut the puzzle to one button and one door if time runs short. Physics props and movement can feel wrong or glitch (clipping, objects falling through the floor), so I will playtest often. Open questions: which assets I can use and credit, and how much of the \"Source-style\" movement I should build. What I will test: the room is solvable with 0 console errors, saved state restores after closing and reopening, an invalid save file is handled, settings persist, and the game can be played with the keyboard only."
     },
     "evidence": {},
     "dailyDraft": {
@@ -174,7 +174,45 @@
         "evidence": "Provide useful settings, validate changes, save them and demonstrate restoration. This must extend beyond the same progress data."
       }
     ],
-    "tasks": [],
+    "tasks": [
+      {
+        "id": "node-a47bc536-5cbd-4e9c-bbb8-65ee27270613",
+        "title": "Build: core interaction",
+        "owner": "Lexxie Ayala",
+        "due": "2026-11-24T20:00",
+        "done": false,
+        "result": "",
+        "description": "In Unity, the player moves in first person (acceleration, friction, air control, jump), can pick up, carry and throw a physics prop, and a button opens a door. The room can be solved from start to finish with 0 console errors.",
+        "nodeId": "a47bc536-5cbd-4e9c-bbb8-65ee27270613",
+        "dependsOn": []
+      },
+      {
+        "id": "node-e9f3cf90-07f2-475c-a20f-e18f4dc167c6",
+        "title": "Test: expected behavior",
+        "owner": "Lexxie Ayala",
+        "due": "2026-11-25T20:00",
+        "done": false,
+        "result": "",
+        "description": "I play the room start to finish and record the result. The movement, prop pickup and button-door puzzle behave as described, with a screenshot of the Console showing 0 errors. Any failure is fixed and retested, and the evidence is saved in the repo.",
+        "nodeId": "e9f3cf90-07f2-475c-a20f-e18f4dc167c6",
+        "dependsOn": [
+          "node-a47bc536-5cbd-4e9c-bbb8-65ee27270613"
+        ]
+      },
+      {
+        "id": "node-d460ee28-3873-4e5c-bc1a-b08eb32b6fbe",
+        "title": "Deliver: source + evidence",
+        "owner": "Lexxie Ayala",
+        "due": "2026-12-10T20:00",
+        "done": false,
+        "result": "",
+        "description": "The ProjectLevo repo is pushed to GitHub and contains the Unity source, a README with run instructions and an evidence map, test screenshots, credits for any outside assets, and my individual explanation. The project opens and runs from a fresh clone.",
+        "nodeId": "d460ee28-3873-4e5c-bc1a-b08eb32b6fbe",
+        "dependsOn": [
+          "node-e9f3cf90-07f2-475c-a20f-e18f4dc167c6"
+        ]
+      }
+    ],
     "dailyNotes": []
   },
   "team": {
