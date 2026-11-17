@@ -20,7 +20,7 @@
     "ai": "Gemini and Claude",
     "aiVerify": "I will run the code and ensure it runs correctly",
     "notes": "I will be the developer of the entire project. I plan on working solo",
-    "plan": "",
+    "plan": "I chose a first-person, physics-puzzle exploration game in Unity (C#) inspired by Half-Life style play, because it is a small, testable scope for one developer. I chose to build in this order: core player and puzzle, then modular architecture, tests, save, settings and accessibility. The order follows the dependencies in my contract: tests need a modular design, and settings need the save system. I chose JSON files for saves and settings because they are easy to validate and test. Each stage gets its own test so I know it works before the next one starts. I work solo with no support team, so all decisions and tasks are mine.",
     "availability": "",
     "service": "",
     "supportMode": "closed",
@@ -124,8 +124,8 @@
     "huddle": {
       "stage": 2,
       "returned": true,
-      "goal": "",
-      "personal": "",
+      "goal": "A working scene where the player can walk in first person, pick up and throw a physics prop, press a button to open a door, and save and reload that puzzle state.",
+      "personal": "In my role as the only developer, I will write all the code, set up the Unity project and Git repo (ProjectLevo), make the documentation, and run the tests. I understand the pipeline as: Goal (working project) → Inputs (code and assets) → Build (core interaction, then modules, tests, save, settings, accessibility) → Test (expected behavior at each stage) → Deliver (source, README, run guide and evidence). I will use AI (Gemini and Claude) for help, but I will run and check all code myself to make sure it works, and I will explain my own contribution in my own words.",
       "questions": ""
     },
     "evidence": {},
