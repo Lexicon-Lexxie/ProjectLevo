@@ -7,15 +7,7 @@
     "projectDescription": "I will make a unity game that allows exploration and will have physic based puzzles, kind of like Half-Life. I want it to appeal to fans of Half-Life/RunThinkShootLive",
     "path": "explore",
     "selected": [
-      "save",
-      "inventory",
-      "settings",
-      "access",
-      "modular",
-      "levels",
-      "profile",
-      "tests",
-      "external"
+      "save"
     ],
     "engine": "Unity / C#",
     "gitEvidence": "I added and commit a simple readme",
