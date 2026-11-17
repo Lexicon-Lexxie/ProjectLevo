@@ -23,8 +23,86 @@
     "service": "",
     "role": "Developer, Lead, Documentation, etc.",
     "board": {
-      "nodes": [],
-      "edges": [],
+      "nodes": [
+        {
+          "id": "24942875-060d-49dc-82d0-e760f43add8b",
+          "kind": "box",
+          "x": 20,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Goal: working project",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "320e69cb-03d0-4f24-a529-5ea51e7aebd5",
+          "kind": "box",
+          "x": 210,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Inputs: code + assets",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "0f709f59-c5ad-4fbe-9d7f-f2391e13954f",
+          "kind": "box",
+          "x": 400,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Build: core interaction",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "064ef551-5d76-4f50-aa22-5425bb61ba35",
+          "kind": "box",
+          "x": 590,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Test: expected behavior",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "da790d6d-7044-46de-b0f7-364d3868a859",
+          "kind": "box",
+          "x": 780,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Deliver: source + evidence",
+          "owner": "",
+          "due": "",
+          "description": ""
+        }
+      ],
+      "edges": [
+        {
+          "from": "24942875-060d-49dc-82d0-e760f43add8b",
+          "to": "320e69cb-03d0-4f24-a529-5ea51e7aebd5"
+        },
+        {
+          "from": "320e69cb-03d0-4f24-a529-5ea51e7aebd5",
+          "to": "0f709f59-c5ad-4fbe-9d7f-f2391e13954f"
+        },
+        {
+          "from": "0f709f59-c5ad-4fbe-9d7f-f2391e13954f",
+          "to": "064ef551-5d76-4f50-aa22-5425bb61ba35"
+        },
+        {
+          "from": "064ef551-5d76-4f50-aa22-5425bb61ba35",
+          "to": "da790d6d-7044-46de-b0f7-364d3868a859"
+        }
+      ],
       "strokes": []
     },
     "huddle": {
