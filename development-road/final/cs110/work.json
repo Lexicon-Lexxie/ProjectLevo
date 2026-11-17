@@ -12,7 +12,10 @@
       "settings",
       "access",
       "modular",
-      "levels"
+      "levels",
+      "profile",
+      "tests",
+      "external"
     ],
     "engine": "Unity / C#",
     "gitEvidence": "I added and commit a simple readme",
