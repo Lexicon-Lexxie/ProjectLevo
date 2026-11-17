@@ -8,10 +8,10 @@
     "path": "explore",
     "selected": [
       "save",
-      "branch",
       "access",
       "tests",
-      "modular"
+      "modular",
+      "settings"
     ],
     "engine": "Unity / C#",
     "gitEvidence": "I added and commit a simple readme",
