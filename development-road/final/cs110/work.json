@@ -278,7 +278,66 @@
         ]
       }
     ],
-    "dailyNotes": []
+    "dailyNotes": [
+      {
+        "date": "2026-11-17",
+        "revision": 1,
+        "worked": "I worked on the planning for Levo, my solo Unity/C# physics-puzzle game. I made the project whiteboard (six-stage build order and a module diagram), wrote the mission and shared decisions in the huddle, and made the task plan with owners, acceptance results and deadlines for core interaction, modular architecture, tests, save, settings and accessibility. Planning is finished. The Unity build has not started yet.",
+        "next": "Start the core interaction task: create the Unity project in the ProjectLevo repo, add a first-person player controller, and test that it moves and jumps with 0 console errors.",
+        "blocker": "None right now. One question: how detailed does the Source-style movement need to be? I will start with simple acceleration, friction and jump, and add air control if time allows.",
+        "evidence": "",
+        "tasks": [
+          {
+            "title": "Build: core interaction",
+            "due": "2026-11-24T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Test: expected behavior",
+            "due": "2026-11-25T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Deliver: source + evidence",
+            "due": "2026-12-10T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Modular architecture",
+            "due": "2026-11-27T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Automated tests",
+            "due": "2026-12-01T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Save and restore",
+            "due": "2026-12-03T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Persistent settings",
+            "due": "2026-12-05T20:00",
+            "done": false,
+            "result": ""
+          },
+          {
+            "title": "Accessible controls",
+            "due": "2026-12-08T20:00",
+            "done": false,
+            "result": ""
+          }
+        ]
+      }
+    ]
   },
   "team": {
     "name": "A beutiful surreal game",
