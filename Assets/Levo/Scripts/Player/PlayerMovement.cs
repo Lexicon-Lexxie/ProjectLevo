@@ -23,7 +23,7 @@ namespace Levo.Player
         [Header("Jump / gravity")]
         [SerializeField] float jumpHeight = 1.1f;     // meters
         [SerializeField] float gravity = 20f;
-        [SerializeField] bool autoHop = true;         // hold Space to keep jumping
+        [SerializeField] bool autoHop = false;        // hold Space to keep jumping
 
         CharacterController controller;
         PlayerInputReader input;
@@ -36,11 +36,12 @@ namespace Levo.Player
         {
             controller = GetComponent<CharacterController>();
             input = GetComponent<PlayerInputReader>();
+            controller.minMoveDistance = 0f;   // tiny per-frame moves must not be ignored
         }
 
         void Update()
         {
-            float dt = Time.deltaTime;
+            float dt = Mathf.Min(Time.deltaTime, 0.05f);   // a lag spike must not launch the player
             IsGrounded = controller.isGrounded;
 
             Vector2 move = Vector2.ClampMagnitude(input.Move, 1f);
@@ -63,12 +64,21 @@ namespace Levo.Player
                 velocity.y -= gravity * dt;
             }
 
-            controller.Move(velocity * dt);
+            // Safety net: if the velocity ever becomes invalid, reset instead of freezing forever.
+            if (!IsFinite(velocity)) velocity = Vector3.zero;
 
-            // Hitting a ceiling stops upward motion; walls slide us, so use the real horizontal velocity.
-            if ((controller.collisionFlags & CollisionFlags.Above) != 0 && velocity.y > 0f) velocity.y = 0f;
-            velocity.x = controller.velocity.x;
-            velocity.z = controller.velocity.z;
+            controller.Move(velocity * dt);
+        }
+
+        // Called by Unity when the controller touches something while moving.
+        // Cancels the part of our velocity that points into walls/ceilings so we slide along them.
+        void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            Vector3 normal = hit.normal;
+            if (normal.y > 0.7f) return;                  // floors are handled by gravity/grounding
+
+            float into = Vector3.Dot(velocity, normal);
+            if (into < 0f) velocity -= normal * into;
         }
 
         void ApplyFriction(float dt)
@@ -93,5 +103,9 @@ namespace Levo.Player
             velocity.x += wishDir.x * accelSpeed;
             velocity.z += wishDir.z * accelSpeed;
         }
+
+        static bool IsFinite(Vector3 v) =>
+            !(float.IsNaN(v.x) || float.IsNaN(v.y) || float.IsNaN(v.z) ||
+              float.IsInfinity(v.x) || float.IsInfinity(v.y) || float.IsInfinity(v.z));
     }
 }
