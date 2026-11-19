@@ -1,12 +1,12 @@
 {
-  "schema": 1,
+  "schema": "final-road-work-v1",
+  "payloadVersion": 2,
   "course": "CS110",
-  "person": {
-    "id": "PERSON-6AD8F64DF2878C92",
-    "name": "Lexxie Ayala",
-    "current": 308,
-    "gradeTarget": "A",
-    "finalTarget": null,
+  "name": "Lexxie Ayala",
+  "work": {
+    "project": "Levo",
+    "projectDescription": "I will make a unity game that allows exploration and will have physic based puzzles, kind of like Half-Life. I want it to appeal to fans of Half-Life/RunThinkShootLive",
+    "path": "explore",
     "selected": [
       "access",
       "tests",
@@ -14,24 +14,6 @@
       "save",
       "settings"
     ],
-    "path": "explore",
-    "project": "Levo",
-    "step": 9,
-    "huddle": {
-      "stage": 2,
-      "returned": true,
-      "goal": "A working scene where the player can walk in first person, pick up and throw a physics prop, press a button to open a door, and save and reload that puzzle state.",
-      "personal": "In my role as the only developer, I will write all the code, set up the Unity project and Git repo (ProjectLevo), make the documentation, and run the tests. I understand the pipeline as: Goal (working project) → Inputs (code and assets) → Build (core interaction, then modules, tests, save, settings, accessibility) → Test (expected behavior at each stage) → Deliver (source, README, run guide and evidence). I will use AI (Gemini and Claude) for help, but I will run and check all code myself to make sure it works, and I will explain my own contribution in my own words.",
-      "questions": "Risks: 53 hours is tight for six stages, so I may cut the puzzle to one button and one door if time runs short. Physics props and movement can feel wrong or glitch (clipping, objects falling through the floor), so I will playtest often. Open questions: which assets I can use and credit, and how much of the \"Source-style\" movement I should build. What I will test: the room is solvable with 0 console errors, saved state restores after closing and reopening, an invalid save file is handled, settings persist, and the game can be played with the keyboard only."
-    },
-    "dailyDraft": {
-      "meeting": "CS110-2026-11-17",
-      "worked": "I worked on the planning for Levo, my solo Unity/C# physics-puzzle game. I made the project whiteboard (six-stage build order and a module diagram), wrote the mission and shared decisions in the huddle, and made the task plan with owners, acceptance results and deadlines for core interaction, modular architecture, tests, save, settings and accessibility. Planning is finished. The Unity build has not started yet.",
-      "next": "Start the core interaction task: create the Unity project in the ProjectLevo repo, add a first-person player controller, and test that it moves and jumps with 0 console errors.",
-      "blocker": "None right now. One question: how detailed does the Source-style movement need to be? I will start with simple acceleration, friction and jump, and add air control if time allows.",
-      "evidence": ""
-    },
-    "repo": "https://github.com/Lexicon-Lexxie/ProjectLevo",
     "engine": "Unity / C#",
     "environmentTest": true,
     "gitEvidence": "I added and commit a simple readme",
@@ -146,7 +128,14 @@
       "personal": "In my role as the only developer, I will write all the code, set up the Unity project and Git repo (ProjectLevo), make the documentation, and run the tests. I understand the pipeline as: Goal (working project) → Inputs (code and assets) → Build (core interaction, then modules, tests, save, settings, accessibility) → Test (expected behavior at each stage) → Deliver (source, README, run guide and evidence). I will use AI (Gemini and Claude) for help, but I will run and check all code myself to make sure it works, and I will explain my own contribution in my own words.",
       "questions": "Risks: 53 hours is tight for six stages, so I may cut the puzzle to one button and one door if time runs short. Physics props and movement can feel wrong or glitch (clipping, objects falling through the floor), so I will playtest often. Open questions: which assets I can use and credit, and how much of the \"Source-style\" movement I should build. What I will test: the room is solvable with 0 console errors, saved state restores after closing and reopening, an invalid save file is handled, settings persist, and the game can be played with the keyboard only."
     },
-    "evidence": {},
+    "evidence": {
+      "core": {
+        "result": "",
+        "test": "",
+        "link": "",
+        "done": false
+      }
+    },
     "dailyDraft": {
       "meeting": "CS110-2026-11-17",
       "worked": "I worked on the planning for Levo, my solo Unity/C# physics-puzzle game. I made the project whiteboard (six-stage build order and a module diagram), wrote the mission and shared decisions in the huddle, and made the task plan with owners, acceptance results and deadlines for core interaction, modular architecture, tests, save, settings and accessibility. Planning is finished. The Unity build has not started yet.",
@@ -156,106 +145,40 @@
     },
     "requirements": [
       {
-        "id": "node-a47bc536-5cbd-4e9c-bbb8-65ee27270613",
-        "title": "Build: core interaction",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-11-24T20:00",
-        "done": false,
-        "result": "",
-        "description": "In Unity, the player moves in first person (acceleration, friction, air control, jump), can pick up, carry and throw a physics prop, and a button opens a door. The room can be solved from start to finish with 0 console errors.",
-        "nodeId": "a47bc536-5cbd-4e9c-bbb8-65ee27270613",
-        "dependsOn": []
+        "id": "core",
+        "code": "R01",
+        "title": "Working project foundation",
+        "evidence": "Working source and build (60); authored program logic (35); meaningful tests (20); run guide and evidence map (20); individual explanation (15)."
       },
       {
-        "id": "node-e9f3cf90-07f2-475c-a20f-e18f4dc167c6",
-        "title": "Test: expected behavior",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-11-25T20:00",
-        "done": false,
-        "result": "",
-        "description": "I play the room start to finish and record the result. The movement, prop pickup and button-door puzzle behave as described, with a screenshot of the Console showing 0 errors. Any failure is fixed and retested, and the evidence is saved in the repo.",
-        "nodeId": "e9f3cf90-07f2-475c-a20f-e18f4dc167c6",
-        "dependsOn": [
-          "node-a47bc536-5cbd-4e9c-bbb8-65ee27270613"
-        ]
+        "id": "access",
+        "code": "R08",
+        "title": "Accessible controls and interface",
+        "evidence": "Demonstrate keyboard access, readable contrast, clear feedback and one user-tested accessibility improvement."
       },
       {
-        "id": "node-d460ee28-3873-4e5c-bc1a-b08eb32b6fbe",
-        "title": "Deliver: source + evidence",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-12-10T20:00",
-        "done": false,
-        "result": "",
-        "description": "The ProjectLevo repo is pushed to GitHub and contains the Unity source, a README with run instructions and an evidence map, test screenshots, credits for any outside assets, and my individual explanation. The project opens and runs from a fresh clone.",
-        "nodeId": "d460ee28-3873-4e5c-bc1a-b08eb32b6fbe",
-        "dependsOn": [
-          "node-e9f3cf90-07f2-475c-a20f-e18f4dc167c6"
-        ]
+        "id": "tests",
+        "code": "R10",
+        "title": "Automated regression tests",
+        "evidence": "Run meaningful normal, boundary and failure tests. Show a defect the suite detects."
       },
       {
-        "id": "ebc662f7-0ed5-4d5d-9c00-2725218d77d6",
+        "id": "modular",
+        "code": "R09",
         "title": "Modular architecture",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-11-27T20:00",
-        "done": false,
-        "result": "",
-        "description": "Code is split into PlayerController, PhysicsInteraction, PuzzleSystem, SaveSystem, SettingsManager and UIManager. Class diagram is saved in the repo. I change one system without rewriting the others.",
-        "nodeId": "",
-        "dependsOn": [
-          "node-a47bc536-5cbd-4e9c-bbb8-65ee27270613"
-        ]
+        "evidence": "Show a module/class diagram, clear responsibilities and a change made without rewriting unrelated systems."
       },
       {
-        "id": "0c4ee30e-5b2b-4755-8e79-876c0fca6b20",
-        "title": "Automated tests",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-12-01T20:00",
-        "done": false,
-        "result": "",
-        "description": "Unity Test Framework tests (EditMode and PlayMode) cover normal, boundary and failure cases and all pass. A planted defect is caught by the suite and shown as evidence.",
-        "nodeId": "",
-        "dependsOn": [
-          "ebc662f7-0ed5-4d5d-9c00-2725218d77d6"
-        ]
+        "id": "save",
+        "code": "R02",
+        "title": "Save and restore progress",
+        "evidence": "Save meaningful state; close and reopen the program; demonstrate correct restoration and invalid-file handling."
       },
       {
-        "id": "7fba2448-8e11-4dcb-80b9-7e5fffcf0628",
-        "title": "Save and restore",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-12-03T20:00",
-        "done": false,
-        "result": "",
-        "description": "Level and puzzle state saves to JSON. After closing and reopening, state is restored correctly, and an invalid or corrupt save file is handled without crashing.",
-        "nodeId": "",
-        "dependsOn": [
-          "node-a47bc536-5cbd-4e9c-bbb8-65ee27270613"
-        ]
-      },
-      {
-        "id": "dc908dbe-bfc0-4c75-83c3-26ceec20924f",
-        "title": "Persistent settings",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-12-05T20:00",
-        "done": false,
-        "result": "",
-        "description": "Sensitivity, volume and keybinds can be changed, are validated, saved to settings.json and restored after reopening.",
-        "nodeId": "",
-        "dependsOn": [
-          "7fba2448-8e11-4dcb-80b9-7e5fffcf0628"
-        ]
-      },
-      {
-        "id": "0340c42c-fe37-42aa-8175-8d139a52115b",
-        "title": "Accessible controls",
-        "owner": "PERSON-6AD8F64DF2878C92",
-        "due": "2026-12-08T20:00",
-        "done": false,
-        "result": "",
-        "description": "The menus work with the keyboard only, keys can be rebound, and subtitles and a high-contrast option exist. I test with the keyboard only and fix one issue I find.",
-        "nodeId": "",
-        "dependsOn": [
-          "dc908dbe-bfc0-4c75-83c3-26ceec20924f"
-        ]
+        "id": "settings",
+        "code": "R04",
+        "title": "Settings that persist",
+        "evidence": "Provide useful settings, validate changes, save them and demonstrate restoration. This must extend beyond the same progress data."
       }
     ],
     "tasks": [
@@ -430,97 +353,8 @@
     "projectRepo": "",
     "members": [
       {
-        "code": "CS110-CONTRACT-217A4601E3FC0467",
-        "kind": "contract",
-        "at": "2026-11-17T21:47:49.514Z",
-        "digest": "9b1a9dcfb1f2187043f60e22e621888b3719a221e490733fc0795f767db28af0",
-        "data": {
-          "project": "Levo",
-          "path": "explore",
-          "selected": [
-            "access",
-            "tests",
-            "modular",
-            "save",
-            "settings"
-          ],
-          "requirements": [
-            {
-              "code": "R01",
-              "id": "core",
-              "title": "Working project foundation",
-              "points": 150,
-              "hours": 18,
-              "evidence": "Working source and build (60); authored program logic (35); meaningful tests (20); run guide and evidence map (20); individual explanation (15)."
-            },
-            {
-              "id": "access",
-              "title": "Accessible controls and interface",
-              "points": 50,
-              "category": "Quality",
-              "hours": 6,
-              "evidence": "Demonstrate keyboard access, readable contrast, clear feedback and one user-tested accessibility improvement.",
-              "requires": [],
-              "icon": "eye",
-              "code": "R08"
-            },
-            {
-              "id": "tests",
-              "title": "Automated regression tests",
-              "points": 75,
-              "category": "Quality",
-              "hours": 10,
-              "evidence": "Run meaningful normal, boundary and failure tests. Show a defect the suite detects.",
-              "requires": [
-                "modular"
-              ],
-              "icon": "check",
-              "code": "R10"
-            },
-            {
-              "id": "modular",
-              "title": "Modular architecture",
-              "points": 75,
-              "category": "Quality",
-              "hours": 10,
-              "evidence": "Show a module/class diagram, clear responsibilities and a change made without rewriting unrelated systems.",
-              "requires": [],
-              "icon": "blocks",
-              "code": "R09"
-            },
-            {
-              "id": "save",
-              "title": "Save and restore progress",
-              "points": 50,
-              "category": "Features",
-              "hours": 5,
-              "evidence": "Save meaningful state; close and reopen the program; demonstrate correct restoration and invalid-file handling.",
-              "requires": [],
-              "icon": "save",
-              "code": "R02"
-            },
-            {
-              "id": "settings",
-              "title": "Settings that persist",
-              "points": 50,
-              "category": "Features",
-              "hours": 4,
-              "evidence": "Provide useful settings, validate changes, save them and demonstrate restoration. This must extend beyond the same progress data.",
-              "requires": [
-                "save"
-              ],
-              "icon": "sliders",
-              "code": "R04"
-            }
-          ],
-          "points": 450,
-          "hours": 53,
-          "person": "Lexxie Ayala",
-          "repo": "https://github.com/Lexicon-Lexxie/ProjectLevo",
-          "course": "CS110",
-          "version": "final-road-preview-20261116-v1",
-          "policy": "starred-properties-v2"
-        }
+        "name": "Lexxie Ayala",
+        "role": "Developer, Lead, Documentation, etc."
       }
     ]
   },
