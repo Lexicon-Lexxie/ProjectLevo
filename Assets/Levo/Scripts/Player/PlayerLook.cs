@@ -1,17 +1,19 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Levo.Core;
 
 namespace Levo.Player
 {
-    /// <summary>Mouse look. Yaw rotates the player body, pitch rotates the camera pivot.</summary>
-    [RequireComponent(typeof(PlayerInputReader))]
+    /// <summary>
+    /// Mouse look. Yaw rotates the player body, pitch rotates the camera pivot.
+    /// Reads input only through IPlayerInput (Esc frees the cursor, left click re-captures it).
+    /// </summary>
     public class PlayerLook : MonoBehaviour
     {
         [SerializeField] Transform cameraPivot;
         [SerializeField] float sensitivity = 0.1f;   // degrees per mouse pixel
         [SerializeField] float pitchLimit = 89f;
 
-        PlayerInputReader input;
+        IPlayerInput input;
         float pitch;
 
         /// <summary>Settings stage will change this; clamped so bad values can't break the game.</summary>
@@ -21,14 +23,21 @@ namespace Levo.Player
             set => sensitivity = Mathf.Clamp(value, 0.01f, 1f);
         }
 
-        void Awake() => input = GetComponent<PlayerInputReader>();
+        void Awake()
+        {
+            input = GetComponent<IPlayerInput>();
+            if (input == null || cameraPivot == null)
+            {
+                Debug.LogError("PlayerLook needs an IPlayerInput component and a Camera Pivot.", this);
+                enabled = false;
+            }
+        }
 
         void Start() => SetCursorLocked(true);
 
         void Update()
         {
-            var keyboard = Keyboard.current;
-            if (keyboard != null && keyboard.escapeKey.wasPressedThisFrame)
+            if (input.CancelPressed)
             {
                 SetCursorLocked(false);
                 return;
@@ -36,8 +45,7 @@ namespace Levo.Player
 
             if (Cursor.lockState != CursorLockMode.Locked)
             {
-                if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-                    SetCursorLocked(true);
+                if (input.PrimaryPressed) SetCursorLocked(true);
                 return;
             }
 

@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
-using Levo.Player;
+using Levo.Core;
 
 namespace Levo.Interaction
 {
     /// <summary>
-    /// E = pick up / drop the prop you are looking at. Left click = throw.
+    /// Pick up / drop (GrabPressed) and throw (PrimaryPressed) the prop you are looking at.
+    /// Knows nothing about the Player module: it only uses IPlayerInput and the camera.
     /// Held props are driven by velocity so they still collide with the world.
     /// </summary>
-    [RequireComponent(typeof(PlayerInputReader), typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController))]
     public class PhysicsGrabber : MonoBehaviour
     {
         [SerializeField] Transform cameraTransform;
@@ -18,7 +19,7 @@ namespace Levo.Interaction
         [SerializeField] float maxHoldSpeed = 12f;
         [SerializeField] float throwSpeed = 10f;
 
-        PlayerInputReader input;
+        IPlayerInput input;
         CharacterController playerCollider;
         Rigidbody held;
         Collider[] heldColliders;
@@ -31,8 +32,13 @@ namespace Levo.Interaction
 
         void Awake()
         {
-            input = GetComponent<PlayerInputReader>();
             playerCollider = GetComponent<CharacterController>();
+            input = GetComponent<IPlayerInput>();
+            if (input == null || cameraTransform == null)
+            {
+                Debug.LogError("PhysicsGrabber needs an IPlayerInput component and a Camera Transform.", this);
+                enabled = false;
+            }
         }
 
         void Update()
@@ -43,7 +49,7 @@ namespace Levo.Interaction
             {
                 if (isHolding) Release(); else TryGrab();
             }
-            else if (isHolding && input.ThrowPressed)
+            else if (isHolding && input.PrimaryPressed)
             {
                 Throw();
             }
@@ -56,7 +62,7 @@ namespace Levo.Interaction
             Vector3 target = cameraTransform.position + cameraTransform.forward * holdDistance;
             Vector3 toTarget = target - held.position;
 
-            if (toTarget.magnitude > reach + 1f) { Release(); return; }   // got stuck behind something
+            if (toTarget.magnitude > reach + 1f) { Release(); return; }
 
             held.linearVelocity = Vector3.ClampMagnitude(toTarget * holdStrength, maxHoldSpeed);
             held.angularVelocity = Vector3.zero;

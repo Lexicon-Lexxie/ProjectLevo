@@ -1,32 +1,33 @@
 using UnityEngine;
+using Levo.Core;
 
 namespace Levo.Player
 {
     /// <summary>
     /// Source-style movement on a CharacterController: ground friction, ground
     /// acceleration, and capped-wish-speed air acceleration (allows air strafing).
-    /// Tune the numbers in the Inspector.
+    /// Reads input only through IPlayerInput.
     /// </summary>
-    [RequireComponent(typeof(CharacterController), typeof(PlayerInputReader))]
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
         [Header("Ground")]
         [SerializeField] float maxGroundSpeed = 6f;   // m/s
         [SerializeField] float groundAccel = 10f;
         [SerializeField] float friction = 6f;
-        [SerializeField] float stopSpeed = 1.5f;      // friction uses at least this speed so you stop quickly
+        [SerializeField] float stopSpeed = 1.5f;
 
         [Header("Air")]
         [SerializeField] float airAccel = 12f;
-        [SerializeField] float airWishCap = 0.6f;     // small cap = Source-like air strafing
+        [SerializeField] float airWishCap = 0.6f;
 
         [Header("Jump / gravity")]
         [SerializeField] float jumpHeight = 1.1f;     // meters
         [SerializeField] float gravity = 20f;
-        [SerializeField] bool autoHop = false;        // hold Space to keep jumping
+        [SerializeField] bool autoHop = false;
 
         CharacterController controller;
-        PlayerInputReader input;
+        IPlayerInput input;
         Vector3 velocity;
 
         public Vector3 Velocity => velocity;
@@ -35,13 +36,18 @@ namespace Levo.Player
         void Awake()
         {
             controller = GetComponent<CharacterController>();
-            input = GetComponent<PlayerInputReader>();
-            controller.minMoveDistance = 0f;   // tiny per-frame moves must not be ignored
+            controller.minMoveDistance = 0f;
+            input = GetComponent<IPlayerInput>();
+            if (input == null)
+            {
+                Debug.LogError("PlayerMovement needs a component that implements IPlayerInput.", this);
+                enabled = false;
+            }
         }
 
         void Update()
         {
-            float dt = Mathf.Min(Time.deltaTime, 0.05f);   // a lag spike must not launch the player
+            float dt = Mathf.Min(Time.deltaTime, 0.05f);
             IsGrounded = controller.isGrounded;
 
             Vector2 move = Vector2.ClampMagnitude(input.Move, 1f);
@@ -51,7 +57,7 @@ namespace Levo.Player
 
             if (IsGrounded)
             {
-                if (velocity.y < 0f) velocity.y = -2f;   // keep stuck to the floor
+                if (velocity.y < 0f) velocity.y = -2f;
                 ApplyFriction(dt);
                 Accelerate(wishDir, wishSpeed, groundAccel, dt);
 
@@ -64,19 +70,14 @@ namespace Levo.Player
                 velocity.y -= gravity * dt;
             }
 
-            // Safety net: if the velocity ever becomes invalid, reset instead of freezing forever.
             if (!IsFinite(velocity)) velocity = Vector3.zero;
-
             controller.Move(velocity * dt);
         }
 
-        // Called by Unity when the controller touches something while moving.
-        // Cancels the part of our velocity that points into walls/ceilings so we slide along them.
         void OnControllerColliderHit(ControllerColliderHit hit)
         {
             Vector3 normal = hit.normal;
-            if (normal.y > 0.7f) return;                  // floors are handled by gravity/grounding
-
+            if (normal.y > 0.7f) return;
             float into = Vector3.Dot(velocity, normal);
             if (into < 0f) velocity -= normal * into;
         }
