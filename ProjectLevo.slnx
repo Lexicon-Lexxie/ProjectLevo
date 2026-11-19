@@ -1,4 +1,6 @@
 ﻿<Solution>
+  <Project Path="Levo.Tests.PlayMode.csproj" />
   <Project Path="Levo.Runtime.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Levo.Tests.EditMode.csproj" />
 </Solution>

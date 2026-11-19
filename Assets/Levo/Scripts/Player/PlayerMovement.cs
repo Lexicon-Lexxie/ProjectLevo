@@ -4,8 +4,8 @@ using Levo.Core;
 namespace Levo.Player
 {
     /// <summary>
-    /// Source-style movement on a CharacterController: ground friction, ground
-    /// acceleration, and capped-wish-speed air acceleration (allows air strafing).
+    /// Source-style movement on a CharacterController. The friction/acceleration math lives in
+    /// MovementMath (unit-tested); this class connects it to input, gravity and the controller.
     /// Reads input only through IPlayerInput.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
@@ -58,19 +58,19 @@ namespace Levo.Player
             if (IsGrounded)
             {
                 if (velocity.y < 0f) velocity.y = -2f;
-                ApplyFriction(dt);
-                Accelerate(wishDir, wishSpeed, groundAccel, dt);
+                velocity = MovementMath.ApplyFriction(velocity, friction, stopSpeed, dt);
+                velocity = MovementMath.Accelerate(velocity, wishDir, wishSpeed, groundAccel, dt);
 
                 bool wantsJump = autoHop ? input.JumpHeld : input.JumpPressed;
                 if (wantsJump) velocity.y = Mathf.Sqrt(2f * gravity * jumpHeight);
             }
             else
             {
-                Accelerate(wishDir, Mathf.Min(wishSpeed, airWishCap), airAccel, dt);
+                velocity = MovementMath.Accelerate(velocity, wishDir, Mathf.Min(wishSpeed, airWishCap), airAccel, dt);
                 velocity.y -= gravity * dt;
             }
 
-            if (!IsFinite(velocity)) velocity = Vector3.zero;
+            if (!MovementMath.IsFinite(velocity)) velocity = Vector3.zero;
             controller.Move(velocity * dt);
         }
 
@@ -81,32 +81,5 @@ namespace Levo.Player
             float into = Vector3.Dot(velocity, normal);
             if (into < 0f) velocity -= normal * into;
         }
-
-        void ApplyFriction(float dt)
-        {
-            float speed = new Vector2(velocity.x, velocity.z).magnitude;
-            if (speed < 0.01f) { velocity.x = 0f; velocity.z = 0f; return; }
-
-            float control = Mathf.Max(speed, stopSpeed);
-            float drop = control * friction * dt;
-            float scale = Mathf.Max(speed - drop, 0f) / speed;
-            velocity.x *= scale;
-            velocity.z *= scale;
-        }
-
-        void Accelerate(Vector3 wishDir, float wishSpeed, float accel, float dt)
-        {
-            float currentSpeed = velocity.x * wishDir.x + velocity.z * wishDir.z;
-            float addSpeed = wishSpeed - currentSpeed;
-            if (addSpeed <= 0f) return;
-
-            float accelSpeed = Mathf.Min(accel * wishSpeed * dt, addSpeed);
-            velocity.x += wishDir.x * accelSpeed;
-            velocity.z += wishDir.z * accelSpeed;
-        }
-
-        static bool IsFinite(Vector3 v) =>
-            !(float.IsNaN(v.x) || float.IsNaN(v.y) || float.IsNaN(v.z) ||
-              float.IsInfinity(v.x) || float.IsInfinity(v.y) || float.IsInfinity(v.z));
     }
 }
