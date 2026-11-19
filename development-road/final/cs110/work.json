@@ -130,10 +130,10 @@
     },
     "evidence": {
       "core": {
-        "result": "",
-        "test": "",
-        "link": "",
-        "done": false
+        "result": "In Unity 6.6 (HDRP), TestRoom runs with a first-person player (WASD, mouse look, jump, Source-style acceleration and friction). I can pick up a physics cube with E, throw it with left click, and drop it. A pressure plate opens a sliding door while the cube rests on it and closes it when removed. The scripts are in Assets/Levo/Scripts (Player, Interaction, Puzzle).",
+        "test": "1. WASD + mouse -> walk and look at head height -> observed: walks and looks correctly after I fixed two defects (a leftover Free Camera script was flying the camera, and movement froze because tiny moves were ignored).\n2. E on cube within 3.5 m, then left click -> pick up, then throw -> observed: works.\n3. Cube on plate, then removed -> door opens, then closes -> observed: works.\n4. Cube trapped under the closing door -> no crash -> observed: 0 console errors; the door clips into the cube (known issue).",
+        "link": "Docs/stage1_test.png, Assets/Levo/Scripts/, repo github.com/Lexicon-Lexxie/ProjectLevo, commit: https://github.com/Lexicon-Lexxie/ProjectLevo/commit/88a52dfcf7618016ab4870ace9302a6ce50e2dc6",
+        "done": true
       }
     },
     "dailyDraft": {
