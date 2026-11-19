@@ -1,0 +1,27 @@
+# Unity generated: never commit
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+*.apk
+*.aab
+# Never commit transfer archives or private keys
+*.zip
+*RECOVERY*
+# OS
+.DS_Store
+Thumbs.db
