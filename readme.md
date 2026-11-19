@@ -21,7 +21,7 @@ Solo project by Lexxie Ayala for CS110 Final Road.
 | `Docs/` | whiteboard, evidence screenshots |
 
 ## Status
-- Stage 1 (Core): in progress.
+- Stage 1 (Core): Done
 - Stages 2-6 (Modular, Tests, Save, Settings, Accessibility): not started.
 
 ## Credits
