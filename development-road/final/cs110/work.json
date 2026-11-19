@@ -134,6 +134,12 @@
         "test": "1. WASD + mouse -> walk and look at head height -> observed: walks and looks correctly after I fixed two defects (a leftover Free Camera script was flying the camera, and movement froze because tiny moves were ignored).\n2. E on cube within 3.5 m, then left click -> pick up, then throw -> observed: works.\n3. Cube on plate, then removed -> door opens, then closes -> observed: works.\n4. Cube trapped under the closing door -> no crash -> observed: 0 console errors; the door clips into the cube (known issue).",
         "link": "Docs/stage1_test.png, Assets/Levo/Scripts/, repo github.com/Lexicon-Lexxie/ProjectLevo, commit: https://github.com/Lexicon-Lexxie/ProjectLevo/commit/88a52dfcf7618016ab4870ace9302a6ce50e2dc6",
         "done": true
+      },
+      "access": {
+        "result": "The code is split into Core (IPlayerInput), Player (PlayerInputReader, PlayerMovement, PlayerLook), Interaction (PhysicsGrabber, Grabbable) and Puzzle (PuzzleTrigger, PressurePlate, SlidingDoor, PuzzleLight). Only PlayerInputReader reads the keyboard/mouse; the other Player and Interaction scripts use the IPlayerInput interface, so they don't depend on each other. Puzzle triggers and targets are linked by Inspector events, not code references. The class diagram and responsibilities are in Docs/Levo_class_diagram.png and Docs/ARCHITECTURE.md.",
+        "test": "",
+        "link": "",
+        "done": false
       }
     },
     "dailyDraft": {
