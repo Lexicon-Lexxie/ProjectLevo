@@ -24,7 +24,7 @@ Solo project by Lexxie Ayala for CS110 Final Road.
 - Stage 1 (Core): Done
 - Stage 2 (Modular): Done
 - Stage 3 (Tests): Done
-- Stage 4 (Save)?:
+- Stage 4 (Save):
 - Stage 5 (Settings):
 - Stage 6 (Accessibility):
 
