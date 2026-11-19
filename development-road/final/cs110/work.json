@@ -136,7 +136,19 @@
         "done": true
       },
       "access": {
+        "result": "",
+        "test": "",
+        "link": "",
+        "done": false
+      },
+      "modular": {
         "result": "The code is split into Core (IPlayerInput), Player (PlayerInputReader, PlayerMovement, PlayerLook), Interaction (PhysicsGrabber, Grabbable) and Puzzle (PuzzleTrigger, PressurePlate, SlidingDoor, PuzzleLight). Only PlayerInputReader reads the keyboard/mouse; the other Player and Interaction scripts use the IPlayerInput interface, so they don't depend on each other. Puzzle triggers and targets are linked by Inspector events, not code references. The class diagram and responsibilities are in Docs/Levo_class_diagram.png and Docs/ARCHITECTURE.md.",
+        "test": "1. After the refactor, walk, jump, pick up and throw the cube, and use Esc/click for the cursor -> same behavior as before -> observed: all worked, 0 console errors.\n2. Added a new target, PuzzleLight, and wired it to the existing PressurePlate -> the light turns on with the door -> observed: works, and no existing script was edited (git show --stat on that commit lists only the new file and the scene).",
+        "link": "Docs/Levo_class_diagram.png, Docs/ARCHITECTURE.md. Refactor commit: https://github.com/Lexicon-Lexxie/ProjectLevo/commit/9efdf6db246e46abfa734791d1a961b2d968ef09 New-feature commit: https://github.com/Lexicon-Lexxie/ProjectLevo/commit/99451a134d4ad2e1334ff1a9631f07d490fd3022 Repo: github.com/Lexicon-Lexxie/ProjectLevo",
+        "done": true
+      },
+      "tests": {
+        "result": "",
         "test": "",
         "link": "",
         "done": false
