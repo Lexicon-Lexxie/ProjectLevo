@@ -161,9 +161,9 @@
       },
       "settings": {
         "result": "Press Tab to open a settings panel with mouse sensitivity (0.01 to 1), volume (0 to 100%) and four rebindable keys (Jump, Grab, QuickSave, QuickLoad). Changes apply immediately. Save writes them to levo_settings.json, a separate file from the progress save (levo_save.json). On start the game loads the file and re-applies every setting. Everything is validated before anything is applied: version, ranges, NaN, unknown or missing actions, reserved keys (W A S D, Esc, Tab) and two actions on one key. A missing or invalid file never crashes the game: defaults are used, a message says why, and the bad file is left untouched. Keys are changed in one place only (PlayerInputReader). Details: Docs/SETTINGS.md.",
-        "test": "",
-        "link": "",
-        "done": false
+        "test": "Normal: set sensitivity 0.40, volume 65%, Jump = Left Shift, press Save, stop Play, press Play again -> same values and Left Shift jumps -> observed: the panel showed the same sensitivity, volume and Jump key after reopening, and Left Shift made the player jump. A PlayMode test also destroys and rebuilds everything and loads from the file.\nIndependent of progress: settings persist without touching levo_save.json -> observed: settings came back from levo_settings.json, a separate file from the progress save.\nBoundary: sensitivity 0.01 and 1, volume 0 and 1 accepted; 0.009, 1.01 and -0.01 refused -> observed: all pass in the automated tests.\nFailure: set \"sensitivity\" to 50 in the file, press Play -> defaults, Console warning, no crash, file not overwritten -> observed: the game started with default settings, the Console showed a warning that the settings file was invalid, and the file was left as I edited it. Also garbage text, truncated file, unknown action, W as a key and two actions on one key are all refused and the defaults are used (automated tests).\nAutomated: 39 EditMode and 11 PlayMode tests for settings, all pass: yes.",
+        "link": "Docs/stage5_panel.png, Docs/stage5_restored.png, Docs/stage5_file.png, Docs/stage5_invalid_file.png, Docs/SETTINGS.md, Assets/Levo/Scripts/Settings/, Assets/Levo/Tests/. Commit: https://github.com/Lexicon-Lexxie/ProjectLevo/commit/2b035ac91c0432f18d2cfa3c7c4dc2ce1ff4b1f7 Repo: github.com/Lexicon-Lexxie/ProjectLevo",
+        "done": true
       }
     },
     "dailyDraft": {
