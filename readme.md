@@ -22,7 +22,11 @@ Solo project by Lexxie Ayala for CS110 Final Road.
 
 ## Status
 - Stage 1 (Core): Done
-- Stages 2-6 (Modular, Tests, Save, Settings, Accessibility): not started.
+- Stage 2 (Modular): Done
+- Stage 3 (Tests): Done
+- Stage 4 (Save):
+- Stage 5 (Settings):
+- Stage 6 (Accessibility):
 
 ## Credits
 Unity High Definition 3D template content is by Unity Technologies. No Valve assets are used.
