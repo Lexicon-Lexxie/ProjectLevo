@@ -68,6 +68,12 @@ namespace Levo.Interaction
             held.angularVelocity = Vector3.zero;
         }
 
+        /// <summary>Drops whatever is held (used when a load teleports the player).</summary>
+        public void ForceRelease()
+        {
+            if (isHolding) Release();
+        }
+
         void TryGrab()
         {
             if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward,

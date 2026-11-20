@@ -15,6 +15,8 @@ namespace Levo.Tests
         public Vector2 Look { get; set; }
         public bool JumpPressed { get; set; }
         public bool JumpHeld { get; set; }
+        public bool QuickSavePressed { get; set; }
+        public bool QuickLoadPressed { get; set; }
 
         bool grabArmed, primaryArmed, cancelArmed;
         bool grabRead, primaryRead, cancelRead;

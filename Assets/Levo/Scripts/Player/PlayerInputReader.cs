@@ -10,7 +10,8 @@ namespace Levo.Player
     /// </summary>
     public class PlayerInputReader : MonoBehaviour, IPlayerInput
     {
-        InputAction moveAction, lookAction, jumpAction, grabAction, primaryAction, cancelAction;
+        InputAction moveAction, lookAction, jumpAction, grabAction, primaryAction, cancelAction,
+                    quickSaveAction, quickLoadAction;
 
         public Vector2 Move => moveAction.ReadValue<Vector2>();
         public Vector2 Look => lookAction.ReadValue<Vector2>();
@@ -19,6 +20,8 @@ namespace Levo.Player
         public bool GrabPressed => grabAction.WasPressedThisFrame();
         public bool PrimaryPressed => primaryAction.WasPressedThisFrame();
         public bool CancelPressed => cancelAction.WasPressedThisFrame();
+        public bool QuickSavePressed => quickSaveAction.WasPressedThisFrame();
+        public bool QuickLoadPressed => quickLoadAction.WasPressedThisFrame();
 
         void Awake()
         {
@@ -34,24 +37,29 @@ namespace Levo.Player
             grabAction = new InputAction("Grab", InputActionType.Button, "<Keyboard>/e");
             primaryAction = new InputAction("Primary", InputActionType.Button, "<Mouse>/leftButton");
             cancelAction = new InputAction("Cancel", InputActionType.Button, "<Keyboard>/escape");
+            quickSaveAction = new InputAction("QuickSave", InputActionType.Button, "<Keyboard>/f5");
+            quickLoadAction = new InputAction("QuickLoad", InputActionType.Button, "<Keyboard>/f9");
         }
 
         void OnEnable()
         {
             moveAction.Enable(); lookAction.Enable(); jumpAction.Enable();
             grabAction.Enable(); primaryAction.Enable(); cancelAction.Enable();
+            quickSaveAction.Enable(); quickLoadAction.Enable();
         }
 
         void OnDisable()
         {
             moveAction.Disable(); lookAction.Disable(); jumpAction.Disable();
             grabAction.Disable(); primaryAction.Disable(); cancelAction.Disable();
+            quickSaveAction.Disable(); quickLoadAction.Disable();
         }
 
         void OnDestroy()
         {
             moveAction?.Dispose(); lookAction?.Dispose(); jumpAction?.Dispose();
             grabAction?.Dispose(); primaryAction?.Dispose(); cancelAction?.Dispose();
+            quickSaveAction?.Dispose(); quickLoadAction?.Dispose();
         }
     }
 }

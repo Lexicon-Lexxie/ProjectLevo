@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 496255439}
   - component: {fileID: 496255438}
   - component: {fileID: 496255437}
+  - component: {fileID: 496255443}
   m_Layer: 0
   m_Name: GrabCube
   m_TagString: Untagged
@@ -591,6 +592,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &496255443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496255436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f51f9b05b8178e4fba0802dcf74cf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Save.SaveableProp
+  saveId: prop_01
 --- !u!1 &884071954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1277,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1981603459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981603461}
+  - component: {fileID: 1981603460}
+  m_Layer: 0
+  m_Name: SaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1981603460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981603459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848e2d04bfe95f943938da94a3480ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Save.SaveSystem
+  fileName: levo_save.json
+  directoryOverride: 
+--- !u!4 &1981603461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981603459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.8482, y: -0.5, z: 6.21618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110263417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1337,8 @@ GameObject:
   - component: {fileID: 2110263420}
   - component: {fileID: 2110263419}
   - component: {fileID: 2110263418}
+  - component: {fileID: 2110263425}
+  - component: {fileID: 2110263424}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1391,6 +1453,32 @@ Transform:
   - {fileID: 1411710862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2110263424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110263417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7eef48e087b7946967fc8a46680e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Save.SaveHotkeys
+  saveSystem: {fileID: 0}
+--- !u!114 &2110263425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110263417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b058f26e6a351b40a21ebcf6c3e6b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Save.SaveablePlayer
+  saveId: player
 --- !u!1 &2113806441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1492,7 @@ GameObject:
   - component: {fileID: 2113806444}
   - component: {fileID: 2113806443}
   - component: {fileID: 2113806442}
+  - component: {fileID: 2113806447}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1518,6 +1607,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113806447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113806441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2036ec8d39cb7bb4ab23db292b1e6a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Save.SaveableDoor
+  saveId: door_01
 --- !u!1 &119734848978804391
 GameObject:
   m_ObjectHideFlags: 0
@@ -6003,3 +6105,4 @@ SceneRoots:
   - {fileID: 1218587020}
   - {fileID: 2113806446}
   - {fileID: 1290906370}
+  - {fileID: 1981603461}

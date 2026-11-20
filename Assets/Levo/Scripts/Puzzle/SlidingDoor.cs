@@ -24,6 +24,13 @@ namespace Levo.Puzzle
 
         public void SetOpen(bool value) => open = value;
 
+        /// <summary>Jumps straight to open/closed with no animation (used when a save is loaded).</summary>
+        public void SnapTo(bool value)
+        {
+            open = value;
+            transform.localPosition = value ? openPosition : closedPosition;
+        }
+
         void Update()
         {
             transform.localPosition = Vector3.MoveTowards(

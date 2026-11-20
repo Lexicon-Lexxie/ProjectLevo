@@ -33,6 +33,9 @@ namespace Levo.Player
         public Vector3 Velocity => velocity;
         public bool IsGrounded { get; private set; }
 
+        /// <summary>Stops all motion (used after the player is teleported by a load).</summary>
+        public void ResetVelocity() => velocity = Vector3.zero;
+
         void Awake()
         {
             controller = GetComponent<CharacterController>();
