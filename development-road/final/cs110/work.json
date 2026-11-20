@@ -152,6 +152,12 @@
         "test": "Normal: prop on plate opens the door -> door opens, closes when removed -> observed: passes.\nBoundary: prop mass exactly at the plate's requirement activates it, just below does not; prop at 10 kg can be picked up, over 10 kg cannot -> observed: passes.\nFailure: destroyed prop on the plate, missing Rigidbody, missing Grabbable, missing input component, huge frame time in friction -> observed: handled, passes.\nDefect the suite detects: I changed friction in MovementMath.ApplyFriction so it added speed instead of removing it -> expected: tests fail -> observed: [number] friction tests failed; I reverted it and all tests passed again.\nTest bug found along the way: 4 grabber tests first failed because my fake input missed one-frame button presses; I fixed the fake input so presses can't be lost, and all tests passed.",
         "link": "Docs/stage3_tests_pass (1).png, Docs/stage3_tests_pass (2).png, Docs/stage3_defect_caught (1).png, Docs/stage3_defect_caught (2).png, Docs/TESTING.md, Assets/Levo/Tests/. Commit: https://github.com/Lexicon-Lexxie/ProjectLevo/commit/7e7988a7efe4140604a7dc29d133a456ae98bf58 Repo: github.com/Lexicon-Lexxie/ProjectLevo",
         "done": true
+      },
+      "save": {
+        "result": "Press F5 to save and F9 to load. The game saves the player's position and facing, each physics prop's position and rotation, each door's open/closed state and the scene name to one JSON file (levo_save.json in Unity's per-user data folder). A SaveSystem finds every object that implements ISaveable, so adding a new saveable thing needs no change to the SaveSystem. Loading is all-or-nothing: the whole file and every entry are validated before anything in the scene changes. Invalid files (empty, not JSON, truncated, hand-edited, wrong version or scene, duplicate ids, or impossible values such as NaN or a prop 1e30 meters away) are refused with an on-screen message and the game is left unchanged. Writing is atomic (temp file then replace). Details are in Docs/SAVE.md.",
+        "test": "",
+        "link": "",
+        "done": false
       }
     },
     "dailyDraft": {
