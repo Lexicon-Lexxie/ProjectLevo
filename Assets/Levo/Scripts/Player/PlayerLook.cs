@@ -15,6 +15,7 @@ namespace Levo.Player
 
         IPlayerInput input;
         float pitch;
+        bool paused;
 
         /// <summary>Settings stage will change this; clamped so bad values can't break the game.</summary>
         public float Sensitivity
@@ -35,8 +36,17 @@ namespace Levo.Player
 
         void Start() => SetCursorLocked(true);
 
+        /// <summary>While paused (settings panel open) the mouse is free and the view does not turn.</summary>
+        public void SetPaused(bool value)
+        {
+            paused = value;
+            SetCursorLocked(!value);
+        }
+
         void Update()
         {
+            if (paused) return;
+
             if (input.CancelPressed)
             {
                 SetCursorLocked(false);

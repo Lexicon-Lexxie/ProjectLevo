@@ -17,6 +17,7 @@ namespace Levo.Tests
         public bool JumpHeld { get; set; }
         public bool QuickSavePressed { get; set; }
         public bool QuickLoadPressed { get; set; }
+        public bool SettingsPressed { get; set; }
 
         bool grabArmed, primaryArmed, cancelArmed;
         bool grabRead, primaryRead, cancelRead;

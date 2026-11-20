@@ -16,5 +16,6 @@ namespace Levo.Core
         bool CancelPressed { get; }           // Esc: release the cursor
         bool QuickSavePressed { get; }        // F5
         bool QuickLoadPressed { get; }        // F9
+        bool SettingsPressed { get; }         // Tab: open / close the settings panel
     }
 }

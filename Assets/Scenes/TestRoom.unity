@@ -1339,6 +1339,8 @@ GameObject:
   - component: {fileID: 2110263418}
   - component: {fileID: 2110263425}
   - component: {fileID: 2110263424}
+  - component: {fileID: 2110263427}
+  - component: {fileID: 2110263426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1479,6 +1481,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Levo.Runtime::Levo.Save.SaveablePlayer
   saveId: player
+--- !u!114 &2110263426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110263417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0f43807ea76694bbe7e4705208ed39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Settings.SettingsPanel
+  manager: {fileID: 0}
+--- !u!114 &2110263427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110263417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62d792b8b0f82845bdbf3ac936e1f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Levo.Runtime::Levo.Settings.SettingsManager
+  fileName: levo_settings.json
+  directoryOverride: 
+  playerLook: {fileID: 0}
 --- !u!1 &2113806441
 GameObject:
   m_ObjectHideFlags: 0
